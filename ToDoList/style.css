@@ -67,8 +67,10 @@ html,body{
 .edit{
     background-color: darkgoldenrod;
     color:white;
+    cursor: pointer;
 }
 .delete{
     background-color:darkred;
     color:white;
+    cursor: pointer;
 }
