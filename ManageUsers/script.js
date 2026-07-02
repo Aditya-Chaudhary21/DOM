@@ -21,7 +21,7 @@ let ui = ()=>{
                 <p>Email-${elem.email}</p>
             </div>
             <div class="actions">
-                <button id="edit">Edit</button>
+                <button onclick="editCard(${index})" id="edit">Edit</button>
                 <button onclick="deleteCard(${index})" id="delete">Delete</button>
                
             </div>
@@ -53,4 +53,12 @@ form.addEventListener("submit", function(event){
 let deleteCard = (index)=>{
     usersData.splice(index, 1);
     ui();
+}
+let editCard = (index)=>{
+    let oldata = usersData[index];
+    let edited = prompt("Edit your task", oldata.name);
+    if(edited !== null && edited.trim() !== ""){
+        oldata.name = edited.trim();
+        ui();
+    }
 }
