@@ -61,7 +61,7 @@ button {
 }
 
 .img {
-  height: 45%;
+  height: 48%;
   width: 100%;
 }
 
@@ -130,7 +130,7 @@ input {
   width: 50%;
   color: white;
   font-size: 40px;
-}
-#close{
-cursor: pointer;
+ }
+ #close{
+    cursor: pointer;
 }
