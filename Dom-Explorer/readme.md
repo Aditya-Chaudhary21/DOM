@@ -1,0 +1,2 @@
+Parsing - Prasing in JS is the process of Analyzing and converting data or code into a format that JS can understand and execute.
+In JavaScript, tokenization is the process of breaking source code or a string into tokens, which are the smallest meaningful units.
