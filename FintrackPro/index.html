@@ -1,0 +1,261 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FinTrack Pro</title>
+
+    <link rel="stylesheet" href="style.css" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </head>
+      
+    <div class="outer">
+    <div class="container">
+      <div class="box">
+        <h1 id="title">Welcome</h1>
+
+        <form id="loginForm"class="hide" >
+       
+          <div class="inputBox">
+            <label>Email</label>
+            <input type="email" id="loginEmail" required />
+          </div>
+
+          <div class="inputBox">
+            <label>Password</label>
+            <input type="password" id="loginPassword" required />
+          </div>
+
+          <button id="loginBtn" type="submit">Login</button>
+
+          <p>
+            Don't have an account?
+
+            <a href="#" id="showRegister"> Register </a>
+          </p>
+        </form>
+
+        <form id="registerForm" >
+          <div class="inputBox">
+            <label>Name</label>
+            <input type="text" id="name" />
+          </div>
+
+          <div class="inputBox">
+            <label>Email</label>
+            <input type="email" id="email" />
+          </div>
+
+          <div class="inputBox">
+            <label>Password</label>
+            <input type="password" id="password" />
+          </div>
+
+          <div class="inputBox">
+            <label>Confirm Password</label>
+            <input type="password" id="confirmPassword" />
+          </div>
+
+          <button id="register" type="submit">Register</button>
+
+          <p>
+            Already have account?
+
+            <a href="#" id="showLogin"> Login </a>
+          </p>
+        </form>
+      </div>
+    </div>
+    </div>
+
+  <!-- ================= NAVBAR ================= -->
+<body>
+  <div class="mainContent">
+
+    <header>
+      <nav class="navbar">
+        <div class="logo">💰 FinTrack Pro</div>
+
+        <ul>
+          <li><a href="#" id="dashboardLink">Dashboard</a></li>
+
+          <li><a href="#" id="settingsLink">Settings</a></li>
+        </ul>
+
+        <div id="navBtns">
+          <button id="addBtn">+ Add Transaction</button>
+          <button id="logoutBtn">Logout</button>
+        </div>
+      </nav>
+    </header>
+
+    <!-- ================= DASHBOARD ================= -->
+
+    <section id="dashboard">
+      <div class="cards">
+        <div class="card balance">
+          <h3>Current Balance</h3>
+
+          <h2 id="balance">₹0</h2>
+        </div>
+
+        <div class="card income">
+          <h3>Total Income</h3>
+
+          <h2 id="income">₹0</h2>
+        </div>
+
+        <div class="card expense">
+          <h3>Total Expense</h3>
+
+          <h2 id="expense">₹0</h2>
+        </div>
+
+        <div class="card total">
+          <h3>Total Transactions</h3>
+
+          <h2 id="transactions">0</h2>
+        </div>
+      </div>
+
+      <!-- Filter Buttons -->
+
+      <div class="filters">
+        <button class="filter active" data-filter="all">All</button>
+
+        <button class="filter" data-filter="income">Income</button>
+
+        <button class="filter" data-filter="expense">Expense</button>
+      </div>
+
+      <!-- Chart -->
+
+      <div class="chartBox">
+        <canvas id="chart"></canvas>
+      </div>
+
+      <!-- Transaction Table -->
+
+      <div class="tableBox">
+        <table>
+          <thead>
+            <tr>
+              <th>Date</th>
+
+              <th>Description</th>
+
+              <th>Category</th>
+
+              <th>Type</th>
+
+              <th>Amount</th>
+
+              <th>Action</th>
+            </tr>
+          </thead>
+
+          <tbody id="tableBody"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ================= SETTINGS ================= -->
+
+    <section id="settings" class="hidden">
+      <div class="settingsCard">
+        <h2>Settings</h2>
+
+        <label>
+          Display Name
+
+          <input type="text" value="John Doe" id="username" />
+        </label>
+
+        <label>
+          Currency
+
+          <select id="currency">
+            <option value="₹">INR</option>
+
+            <option value="$">USD</option>
+
+            <option value="€">EUR</option>
+
+            <option value="£">GBP</option>
+
+            <option value="¥">JPY</option>
+          </select>
+        </label>
+
+        <label class="toggle">
+          Dark Mode
+
+          <input type="checkbox" id="darkToggle" />
+        </label>
+
+        <button id="saveSettings">Save</button>
+
+        <button id="resetData">Reset All Data</button>
+      </div>
+    </section>
+
+    <!-- ================= MODAL ================= -->
+
+    <div id="modal" class="modal hidden">
+      <div class="modalContent">
+        <span id="close">x</span>
+
+        <h2>Add Transaction</h2>
+
+        <form id="transactionForm">
+          <select id="type">
+            <option value="">Select Type</option>
+
+            <option value="income">Income</option>
+
+            <option value="expense">Expense</option>
+          </select>
+
+          <input type="text" id="description" placeholder="Description" />
+
+          <select id="category">
+            <option value="">Select Category</option>
+
+            <option>Salary</option>
+
+            <option>Food</option>
+
+            <option>Shopping</option>
+
+            <option>Utilities</option>
+
+            <option>Entertainment</option>
+
+            <option>Petrol</option>
+
+            <option>Recharge</option>
+
+            <option>Other</option>
+          </select>
+
+          <input type="number" id="amount" placeholder="Amount" />
+
+          <input type="date" id="date" />
+
+          <button type="submit" id="save">Save Transaction</button>
+        </form>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+    </div>
+  </body>
+</html>
